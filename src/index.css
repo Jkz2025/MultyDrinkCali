@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", system-ui, sans-serif;
+  --color-bosque: #12391d;
+  --color-hoja: #2f8a34;
+  --color-lima: #a6cf3b;
+  --color-crema: #f2f7e6;
+  --color-oro: #b98a2e;
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--color-crema); color: var(--color-bosque); }
+
+/* ===== Menú hamburguesa (3 líneas -> X) ===== */
+.burger {
+  width: 44px; height: 44px;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center; gap: 6px;
+  border-radius: 9999px;
+  background: var(--color-bosque);
+  cursor: pointer;
+}
+.burger span {
+  display: block; width: 22px; height: 2.5px; border-radius: 2px;
+  background: var(--color-lima);
+  transition: transform .3s ease, opacity .2s ease;
+}
+.burger.open span:nth-child(1) { transform: translateY(8.5px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity: 0; }
+.burger.open span:nth-child(3) { transform: translateY(-8.5px) rotate(-45deg); }
+.burger:focus-visible, a:focus-visible, button:focus-visible {
+  outline: 3px solid var(--color-lima); outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
